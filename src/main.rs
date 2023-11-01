@@ -3,9 +3,9 @@
 #![deny(warnings)]
 
 #[macro_use]
+mod console;
 mod lang_items;
 mod sbi;
-use crate::sbi::console_putchar;
 
 use core::arch::global_asm;
 global_asm!(include_str!("entry.asm"));
@@ -15,10 +15,7 @@ global_asm!(include_str!("entry.asm"));
 pub fn rust_main() -> ! {
     clear_bss();
 
-    for c in "hello, world!".chars() {
-        console_putchar(c as usize);
-    }
-
+    println!("hello, world!");
     loop {}
 }
 
