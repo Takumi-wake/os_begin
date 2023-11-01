@@ -1,6 +1,7 @@
 #![no_std]
 #![no_main]
 #![deny(warnings)]
+#![feature(panic_info_message)]
 
 #[macro_use]
 mod console;
@@ -16,7 +17,7 @@ pub fn rust_main() -> ! {
     clear_bss();
 
     println!("hello, world!");
-    loop {}
+    panic!("shutdown OS now!")
 }
 
 fn clear_bss() {
